@@ -1,0 +1,281 @@
+.incomplete-task-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 3px #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px 5px 0 0;
+}
+
+.incomplete-task-list div {
+    display: flex;
+    flex-direction: row;
+}
+
+.task-input {
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+.tick-svg:hover {
+    cursor: pointer;
+}
+
+.circle-icon {
+    height: 25px;
+    width: 25px;
+    fill: #6352ff;
+    stroke: #6352ff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3px;
+    margin: 13px 10px;
+}
+
+.tick-circle-icon {
+    height: 23px;
+    width: 23px;
+    fill: #6352ff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin: 13px 11px;
+}
+
+.border-star-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 16px;
+    fill: #6352ff;
+    margin-top: 13px;
+}
+
+.border-star-icon:hover {
+    cursor: pointer;
+}
+
+.filled-star-icon {
+    height: 23px;
+    width: 23px;
+    margin-right: 14px;
+    fill: #6352ff;
+    margin-top: 12px;
+}
+
+.filled-star-icon:hover {
+    cursor: pointer;
+}
+
+.delete-icon {
+    height: 25px;
+    width: 25px;
+    fill: #6352ff;
+    margin-top: 11px;
+    margin-right: 10px;
+}
+
+.delete-icon:hover {
+    cursor: pointer;
+}
+
+.add-task-options {
+    width: 100%;
+    height: 40px;
+    background-color: #f4f4fb;
+    box-shadow: 0 2px 3px #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.calendar {
+    height: 25px;
+    width: 25px;
+    stroke-width: 0.2px;
+    stroke: #616161;
+}
+
+.iconDiv {
+    height: 27px;
+    width: 25px;
+    padding: 4px;
+    margin-right: 10px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 300ms ease-in-out 0s, background-color 300ms linear 200ms;
+}
+
+.iconSVG {
+    height: 25px;
+    aspect-ratio: 1 / 1;
+}
+
+.iconDiv:hover,
+.iconDiv:focus-visible {
+    width: 128px;
+    background-color: #ffffff;
+    transition: width 300ms ease-in-out 0s, background-color 100ms linear 0s;
+}
+
+.iconDiv:focus-visible {
+    outline: 1px solid #ffffff;
+    outline-offset: 4px;
+}
+
+.iconDiv:active {
+    opacity: 0.9;
+}
+
+.iconDiv::after {
+    content: attr(tooltip);
+    animation: fadeIn 600ms linear forwards;
+    color:#616161;
+}
+  
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+  
+.save-date-time-button {
+    background-color: #7d77b5;
+    text-align: center;
+    padding: 1px;
+    border-radius: 5px;
+    color: #ffffff;
+    width: 100%;
+    border: none;
+}
+
+.save-date-time-button:disabled {
+    background-color: #a7a4a4;
+}
+
+.reminder {
+    margin-top: 1px;
+    height: 24px;
+    width: 24px;
+    stroke-width: 0.2px;
+    stroke: #616161;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.date-time-chip {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px 10px;
+    font-size: 15px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 2px;
+}
+
+.date-time-chip svg {
+    margin-right: 5px;
+}
+
+.cross-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+    margin-top: -1px;
+    margin-right: -1px !important;
+}
+
+.cross-icon:hover {
+    cursor: pointer;
+}
+
+.update-button {
+    margin-top: 1px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 1px solid #8e8d8d;
+    background-color: #ffffff;
+    color: #a7a4a4;
+    height: 27px;
+    width: 50px;
+}
+
+.update-button:disabled:hover {
+    background-color: #ffffff;
+    cursor: default;
+}
+
+.update-button:hover {
+    background-color: #d6d1fe;
+    cursor: pointer;
+}
+
+.input-div {
+    position: relative;
+}
+
+.input-div:hover {
+    cursor: pointer;
+}
+
+.tooltip-content {
+    position: absolute;
+    border-radius: 15px;
+    top: 100%;
+    left: 0;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 0 2px 3px #e0e0e0;
+    z-index: 1000;
+}
+
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #cccccc;
+    top: -10px;
+}
+
+.input-date {
+    border: none;
+    outline: none;
+    margin-right: 30px;
+}
+
+.input-time {
+    border: none;
+    outline: none;
+}

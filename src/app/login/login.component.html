@@ -1,0 +1,20 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h3>Login Here</h3>
+    <label for="username">Username</label>
+    <input type="text" placeholder="Username" id="username" formControlName="username" (focus)="onInputFocus()">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" formControlName="password" (focus)="onInputFocus()">
+
+    <button type="submit" [disabled]="!loginForm.valid" [ngClass]="{'invalid-form': !loginForm.valid}">Log In</button>
+    <div *ngIf="showError" style="color: red; margin-top: 10px;">Please enter valid credentials</div>
+  
+    <div style="margin-top: 10px;">
+      <span>Not a member? <a routerLink="/register">Register</a></span>
+    </div>
+</form>
+  

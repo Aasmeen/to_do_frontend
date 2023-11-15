@@ -1,0 +1,21 @@
+<div class="navbar">
+    <div class="todo-heading">To Do</div>
+    <div class="search-container">
+        <input type="text" class="search-input" [(ngModel)]="searchTaskTitle" placeholder="Search..." (keyup.enter)="searchTask()">
+        <button class="search-button" (click)="searchTask()">
+            <i class="fas fa-search"></i>
+          </button>
+      </div>
+    <div id="user-icon" class="user-dropdown" (click)="toggleDropdown()">
+        <div class="user-initials">
+            {{userInitials}}
+        </div>
+        <div class="dropdown-content" *ngIf="showLogout" (click)="logout()">
+            <a>Logout</a>
+        </div>
+    </div>      
+</div>
+<app-task
+    [important_task]="important_task"
+    [incomplete_task]="incomplete_task"
+></app-task>

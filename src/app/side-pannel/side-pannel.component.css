@@ -1,0 +1,42 @@
+.side-pannel {
+    height: 100%;
+    width: 300px;
+    box-shadow: 0 0 7px #e0e0e0;
+    position: fixed;
+    padding-top: 20px;
+    z-index: 998;
+}
+
+.side-pannel .ul {
+    list-style: none;
+    font-size: 17px;
+}
+
+.side-pannel-ul {
+    padding: 15px 20px;
+    list-style: none;
+    font-size: 17px;
+    display: flex;
+    flex-direction: row;
+}
+
+.side-pannel-ul:hover {
+    background-color: #f0f7fc52;
+}
+
+.side-pannel-ul .number {
+    position: absolute;
+    right: 30px;
+}
+
+.star {
+    height: 17px;
+    width: 17px;
+    margin-right: 11px;
+}
+
+.home {
+    height: 19px;
+    width: 19px;
+    margin-right: 9px;
+}

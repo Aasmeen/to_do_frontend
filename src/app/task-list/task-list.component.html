@@ -1,0 +1,125 @@
+<div class="incomplete-task-list-div">
+    <div class="incomplete-task-list">
+        <div>
+            <div (mouseenter)="showTick()" (mouseleave)="hideTick()" (click)="updateIsCompleted()" class="tick-svg">
+                <svg id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="circle-icon" *ngIf="!task.is_completed && !showTickCircle || task.is_completed && showTickCircle">
+                    <g>
+                        <g>
+                            <path d="M256,48C141.1,48,48,141.1,48,256s93.1,208,208,208c114.9,0,208-93.1,208-208S370.9,48,256,48z M256,446.7    c-105.1,0-190.7-85.5-190.7-190.7c0-105.1,85.5-190.7,190.7-190.7c105.1,0,190.7,85.5,190.7,190.7    C446.7,361.1,361.1,446.7,256,446.7z"/>
+                        </g>
+                    </g>
+                </svg>
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="tick-circle-icon" *ngIf="!task.is_completed && showTickCircle">
+                    <g data-name="Layer 28" id="Layer_28">
+                        <path class="cls-1" d="M16,31A15,15,0,1,1,31,16,15,15,0,0,1,16,31ZM16,3A13,13,0,1,0,29,16,13,13,0,0,0,16,3Z"/>
+                        <path class="cls-1" d="M13.67,22a1,1,0,0,1-.73-.32l-4.67-5a1,1,0,0,1,1.46-1.36l3.94,4.21,8.6-9.21a1,1,0,1,1,1.46,1.36l-9.33,10A1,1,0,0,1,13.67,22Z"/>
+                    </g>
+                </svg>
+                <svg id="Icons" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="tick-circle-icon" *ngIf="task.is_completed && !showTickCircle">
+                    <path class="cls-1" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm5.707,8.707-7,7a1,1,0,0,1-1.414,0l-3-3a1,1,0,0,1,1.414-1.414L10,14.586l6.293-6.293a1,1,0,0,1,1.414,1.414Z"/>
+                </svg>
+            </div>
+            <input type="text" [(ngModel)]="taskInput" class="task-input" [ngClass]="{'strike': strikeTaskTitle}" (focus)="toggleStrike()" (blur)="toggleStrike()" (keyup.enter)="updateTitle()">
+        </div>
+        <div>
+            <div (click)="updateIsImportant()">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="border-star-icon" *ngIf="!task.is_important">
+                    <g data-name="Layer 53" id="Layer_53">
+                        <path class="cls-1" d="M8,31a2,2,0,0,1-1.17-.38A2.13,2.13,0,0,1,6,28.69l.73-8.19L1.5,14.34a2.14,2.14,0,0,1-.39-2.06A2.06,2.06,0,0,1,2.6,10.9l7.62-1.8,4-7a2.05,2.05,0,0,1,3.58,0l4,7.05,7.62,1.8a2.06,2.06,0,0,1,1.49,1.38,2.14,2.14,0,0,1-.39,2.06L25.32,20.5l.73,8.19a2.13,2.13,0,0,1-.88,1.93,2,2,0,0,1-2,.2L16,27.58,8.84,30.82A2,2,0,0,1,8,31ZM16.05,3l-4.3,7.43a1,1,0,0,1-.64.48l-8,1.89c-.06.1-.07.16,0,.21l5.45,6.49a1,1,0,0,1,.23.73l-.77,8.6C7.93,29,8,29,8,29l7.58-3.42a1,1,0,0,1,.82,0L24,29s.09,0,.08-.13l-.77-8.6a1,1,0,0,1,.23-.73L29,13.05a.15.15,0,0,0,0-.14l-8.1-2a1,1,0,0,1-.64-.48ZM10.88,10h0Z"/>
+                    </g>
+                </svg>
+                <svg style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="filled-star-icon" *ngIf="task.is_important">
+                    <g id="info"/>
+                    <g id="icons">
+                        <path d="M12.9,2.6l2.3,5c0.1,0.3,0.4,0.5,0.7,0.6l5.2,0.8C22,9,22.3,10,21.7,10.6l-3.8,3.9c-0.2,0.2-0.3,0.6-0.3,0.9   l0.9,5.4c0.1,0.8-0.7,1.5-1.4,1.1l-4.7-2.6c-0.3-0.2-0.6-0.2-0.9,0l-4.7,2.6c-0.7,0.4-1.6-0.2-1.4-1.1l0.9-5.4   c0.1-0.3-0.1-0.7-0.3-0.9l-3.8-3.9C1.7,10,2,9,2.8,8.9l5.2-0.8c0.3,0,0.6-0.3,0.7-0.6l2.3-5C11.5,1.8,12.5,1.8,12.9,2.6z" id="favorite"/>
+                    </g>
+                </svg>
+            </div>
+            <div (click)="deleteTask()">
+                <svg id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="delete-icon">
+                    <g>
+                        <g id="Icon-Trash" transform="translate(232.000000, 228.000000)">
+                            <polygon class="st0" id="Fill-6" points="-207.5,-205.1 -204.5,-205.1 -204.5,-181.1 -207.5,-181.1    "/>
+                            <polygon class="st0" id="Fill-7" points="-201.5,-205.1 -198.5,-205.1 -198.5,-181.1 -201.5,-181.1    "/>
+                            <polygon class="st0" id="Fill-8" points="-195.5,-205.1 -192.5,-205.1 -192.5,-181.1 -195.5,-181.1    "/>
+                            <polygon class="st0" id="Fill-9" points="-219.5,-214.1 -180.5,-214.1 -180.5,-211.1 -219.5,-211.1    "/>
+                            <path class="st0" d="M-192.6-212.6h-2.8v-3c0-0.9-0.7-1.6-1.6-1.6h-6c-0.9,0-1.6,0.7-1.6,1.6v3h-2.8v-3     c0-2.4,2-4.4,4.4-4.4h6c2.4,0,4.4,2,4.4,4.4V-212.6" id="Fill-10"/>
+                            <path class="st0" d="M-191-172.1h-18c-2.4,0-4.5-2-4.7-4.4l-2.8-36l3-0.2l2.8,36c0.1,0.9,0.9,1.6,1.7,1.6h18     c0.9,0,1.7-0.8,1.7-1.6l2.8-36l3,0.2l-2.8,36C-186.5-174-188.6-172.1-191-172.1" id="Fill-11"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="add-task-options">
+        <div class="row-flex">
+            <div id="schedule-input-div" class="row-flex">
+                <div class="input-div">
+                    <div class="iconDiv" tooltip="Schedule Task" tabindex="0" *ngIf="!task.schedule">
+                        <div class="iconSVG" (click)="toggleInputSchedule()">
+                            <svg class="fluentIcon dateButton-icon ___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="calendar">
+                                <path d="M7 11a1 1 0 100-2 1 1 0 000 2zm1 2a1 1 0 11-2 0 1 1 0 012 0zm2-2a1 1 0 100-2 1 1 0 000 2zm1 2a1 1 0 11-2 0 1 1 0 012 0zm2-2a1 1 0 100-2 1 1 0 000 2zm4-5.5A2.5 2.5 0 0014.5 3h-9A2.5 2.5 0 003 5.5v9A2.5 2.5 0 005.5 17h9a2.5 2.5 0 002.5-2.5v-9zM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 014 14.5V7zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4z" fill="#616161;"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tooltip-content" *ngIf="inputSchedule">
+                        <div class="arrow" [style.left]="task.schedule ? '6%':'3%'"></div>
+                        <div class="row-flex">
+                            <input type="date" class="input-date" [(ngModel)]="scheduleInputDate" (input)="enableSaveScheduleButton()">
+                            <input type="time" class="input-time" [(ngModel)]="scheduleInputTime" (input)="enableSaveScheduleButton()">
+                        </div>
+                        <button class="save-date-time-button" [disabled]="!saveScheduleButton" (click)="saveSchedule()">Save</button>
+                    </div>
+                </div>
+                <div class="date-time-chip" *ngIf="task.schedule">
+                    <div class="row-flex" (click)="toggleInputSchedule()">
+                        <svg class="fluentIcon dateButton-icon ___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 11a1 1 0 100-2 1 1 0 000 2zm1 2a1 1 0 11-2 0 1 1 0 012 0zm2-2a1 1 0 100-2 1 1 0 000 2zm1 2a1 1 0 11-2 0 1 1 0 012 0zm2-2a1 1 0 100-2 1 1 0 000 2zm4-5.5A2.5 2.5 0 0014.5 3h-9A2.5 2.5 0 003 5.5v9A2.5 2.5 0 005.5 17h9a2.5 2.5 0 002.5-2.5v-9zM4 7h12v7.5c0 .83-.67 1.5-1.5 1.5h-9A1.5 1.5 0 014 14.5V7zm1.5-3h9c.83 0 1.5.67 1.5 1.5V6H4v-.5C4 4.67 4.67 4 5.5 4z" fill="#616161;"></path>
+                        </svg>
+                        {{scheduleDate}}
+                        <div (click)="clearSchedule()">
+                            <svg data-name="Capa 1" id="Capa_1" viewBox="0 0 20 19.84" xmlns="http://www.w3.org/2000/svg" class="cross-icon">
+                                <path d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="reminder-input-div" class="row-flex">
+                <div class="input-div">
+                    <div class="iconDiv" tooltip="Add Reminder" tabindex="0" *ngIf="!task.reminder">
+                        <div class="iconSVG" (click)="toggleInputReminder()">
+                            <svg class="fluentIcon reminderButton-icon ___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="reminder">
+                                <path d="M10 2a5.92 5.92 0 015.98 5.36l.02.22V11.4l.92 2.22a1 1 0 01.06.17l.01.08.01.13a1 1 0 01-.75.97l-.11.02L16 15h-3.5v.17a2.5 2.5 0 01-5 0V15H4a1 1 0 01-.26-.03l-.13-.04a1 1 0 01-.6-1.05l.02-.13.05-.13L4 11.4V7.57A5.9 5.9 0 0110 2zm1.5 13h-3v.15a1.5 1.5 0 001.36 1.34l.14.01c.78 0 1.42-.6 1.5-1.36V15zM10 3a4.9 4.9 0 00-4.98 4.38L5 7.6V11.5l-.04.2L4 14h12l-.96-2.3-.04-.2V7.61A4.9 4.9 0 0010 3z" fill="#616161;"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tooltip-content" *ngIf="inputReminder">
+                        <div class="arrow" [style.left]="task.reminder ? '6%':'3%'"></div>
+                        <div class="row-flex">
+                            <input type="date" class="input-date" [(ngModel)]="reminderInputDate" (input)="enableSaveReminderButton()">
+                            <input type="time" class="input-time" [(ngModel)]="reminderInputTime" (input)="enableSaveReminderButton()">
+                        </div>
+                        <button class="save-date-time-button" [disabled]="!saveReminderButton" (click)="saveReminder()">Save</button>
+                    </div>
+                </div>
+                <div class="date-time-chip" *ngIf="task.reminder">
+                    <div class="row-flex" (click)="toggleInputReminder()">
+                        <svg class="fluentIcon reminderButton-icon ___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2a5.92 5.92 0 015.98 5.36l.02.22V11.4l.92 2.22a1 1 0 01.06.17l.01.08.01.13a1 1 0 01-.75.97l-.11.02L16 15h-3.5v.17a2.5 2.5 0 01-5 0V15H4a1 1 0 01-.26-.03l-.13-.04a1 1 0 01-.6-1.05l.02-.13.05-.13L4 11.4V7.57A5.9 5.9 0 0110 2zm1.5 13h-3v.15a1.5 1.5 0 001.36 1.34l.14.01c.78 0 1.42-.6 1.5-1.36V15zM10 3a4.9 4.9 0 00-4.98 4.38L5 7.6V11.5l-.04.2L4 14h12l-.96-2.3-.04-.2V7.61A4.9 4.9 0 0010 3z" fill="#616161;"></path>
+                        </svg>
+                        {{remiderDate}}
+                        <div (click)="clearReminder()">
+                            <svg data-name="Capa 1" id="Capa_1" viewBox="0 0 20 19.84" xmlns="http://www.w3.org/2000/svg" class="cross-icon">
+                                <path d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="task.title!=taskInput && taskInput">
+            <button class="update-button" (click)="updateTitle()">Save</button>
+        </div>
+    </div>
+</div>

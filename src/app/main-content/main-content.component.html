@@ -1,0 +1,23 @@
+<div class="main-content">
+    <div class="task-header">Tasks</div>
+    <app-add-task></app-add-task>
+    <app-task-list
+        *ngFor="let task of incompletedList"
+        [task]="task"
+    ></app-task-list>
+    <div *ngIf="completedList.length">
+        <div class="completed" (click)="toggleArrow()">
+            <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="arrow-icon" [class.down]="isArrowDown">
+                <polyline points="9 18 15 12 9 6"/>
+            </svg>
+            <div class="completed-header">Completed</div>
+            <div class="completed-number">{{completedList.length}}</div>
+        </div>
+        <div *ngIf="isArrowDown">
+            <app-task-list
+                *ngFor="let task of completedList"
+                [task]="task"
+            ></app-task-list>
+        </div>
+    </div>
+</div>

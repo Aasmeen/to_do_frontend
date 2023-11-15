@@ -1,0 +1,52 @@
+.main-content {
+    background-color: #fbfaf9;
+    flex: 1;
+    min-height: 91.5vh;
+    min-width: 167.3vh;
+    padding: 60px;
+    margin-left: 300px;
+}
+
+.task-header {
+    padding: 20px 0;
+    font-size: 30px;
+    color: #6352ff;
+}
+
+.completed {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-bottom: 13px;
+    font-size: 20px;
+    color: #616161;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.completed:hover {
+    cursor: pointer;
+}
+
+.completed-header {
+    padding: 1px 10px;
+}
+
+.completed-number {
+    padding: 1px 15px;
+}
+
+.arrow-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+  
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+  
+.arrow-icon.down {
+    transform: rotate(90deg);
+}
+  

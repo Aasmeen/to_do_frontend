@@ -1,0 +1,29 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h3>Register Here</h3>
+    <label for="username">Username</label>
+    <input type="text" placeholder="Username" id="username" formControlName="username" (focus)="onInputFocus()">
+
+    <label for="first_name">Frist Name</label>
+    <input type="text" placeholder="First Name" id="first_name" formControlName="first_name">
+
+    <label for="last_name">Last Name</label>
+    <input type="text" placeholder="Last Name" id="last_name" formControlName="last_name">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" formControlName="password">
+
+    <label for="password">Confirm Password</label>
+    <input type="password" placeholder="Confirm Password" id="password2" formControlName="password2">
+
+    <button type="submit" [disabled]="!registerForm.valid" [ngClass]="{'invalid-form': !registerForm.valid}">Register</button>
+    <div *ngIf="error" style="color: red; margin-top: 10px;">{{error}}</div>
+  
+    <div style="margin-top: 10px;">
+      <span>Already a member? <a routerLink="/login">Login</a></span>
+    </div>
+</form>
+  
